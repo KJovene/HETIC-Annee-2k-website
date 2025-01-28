@@ -10,6 +10,19 @@ const UploadButton = ({ setContent }) => {
             fileReader.onload = (e) => { // Création d'une fonction de lecteur du contenu du fichier
                 const fileText = e.target.result; // Récupération du contenu du fichier
                 setContent(fileText); // Mise à jour du contenu du fichier
+                let fileList = sessionStorage.getItem("files")
+                fileList = JSON.parse(fileList)
+                
+                if (!fileList) {
+                    fileList = []
+                }
+                
+                fileList.push({
+                    "Title": file.name,
+                    "Content": fileText
+                })
+
+                sessionStorage.setItem("files", JSON.stringify(fileList))
             };
             fileReader.readAsText(file); // Lecture du contenu du fichier
         };

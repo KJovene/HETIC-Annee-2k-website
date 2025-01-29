@@ -1,19 +1,19 @@
-import UploadButton from "./components/buttons/UploadButton";
+// Importation des composants
 import DownloadButton from "./components/buttons/DownloadButton";
+import UploadButton from "./components/buttons/UploadButton";
+import Addfile from "./controllers/Addfile";
+import DownloadController from "./controllers/Downloadfile";
 import React from "react";
 import { useState } from "react";
-
+import { marked } from "marked";
 
 // Appel du composant bouton d'upload
 const App = () => {
-  const [content, setContent] = useState("Nabil The Greatest"); // Création d'un état de base pour le contenu du fichier 
-  // content est le contenu du fichier et setContent est le paramètre de mise à jour du contenu du fichier
-  
+  const [content, setContent] = useState(""); // Création d'un état de base pour le contenu du fichier
   return (
     <div>
-      <UploadButton setContent={setContent} />
-      <DownloadButton content={content} />
-      <div>{content}</div>
+      <Addfile />
+      <DownloadController />
     </div>
   );
 

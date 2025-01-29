@@ -31,7 +31,7 @@ const UploadButton = ({ setContent }) => {
     return (
         <div>
             <label htmlFor="upload-cta">Import</label>
-            <input type="file" id="upload-cta" onChange={FileUpload} />
+            <input type="file" id="upload-cta" accept=".md" onChange={FileUpload} />
         </div>
     );
 };

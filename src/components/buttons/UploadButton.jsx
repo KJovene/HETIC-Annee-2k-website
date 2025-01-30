@@ -1,4 +1,5 @@
 import React from "react";
+import { addFile } from "../../controllers/filecontroller";
 
 // Bouton d'upload
 const UploadButton = ({ setContent }) => {
@@ -7,32 +8,18 @@ const UploadButton = ({ setContent }) => {
 
         if (file) { // Si il existe un fichier
             const fileReader = new FileReader(); // Création d'une instance du fichier
-            fileReader.onload = (e) => { // Création d'une fonction de lecteur du contenu du fichier
-                const fileText = e.target.result; // Récupération du contenu du fichier
+            fileReader.onload = (event) => { // Création d'une fonction de lecteur du contenu du fichier
+                const fileText = event.target.result; // Récupération du contenu du fichier
                 setContent(fileText); // Mise à jour du contenu du fichier
-                let fileList = sessionStorage.getItem("files")
-                fileList = JSON.parse(fileList)
                 
-                if (!fileList) {
-                    fileList = []
-                }
-                
-                fileList.push({
-                    "Title": file.name,
-                    "Content": fileText
-                })
-
-                sessionStorage.setItem("files", JSON.stringify(fileList))
+                addFile(file.name, fileText); // Ajout du fichier à la session storage
             };
             fileReader.readAsText(file); // Lecture du contenu du fichier
         };
     };
     // Retourne un input type file 
     return (
-        <div>
-            <label htmlFor="upload-cta">Import</label>
             <input type="file" id="upload-cta" accept=".md" onChange={FileUpload} />
-        </div>
     );
 };
 

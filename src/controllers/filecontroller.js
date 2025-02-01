@@ -5,6 +5,7 @@ export const getFile = (fileName) => { // Paramètre = Nom du fichier
     if (files === null) { // Si il n'y a pas de fichiers stockés, retrourne un tableau vide
         return []; 
     }
+
     return files.find(file => file.Title === fileName); // Retourne le fichier correspondant au nom
 };
 
@@ -40,6 +41,11 @@ export const addFile = (fileName, content) => { // Paramètres = Nom du fichier,
         files = JSON.parse(storedFiles); 
     }
     let newFileName = fileName; // Création d'une variable pour le nom du fichier
+    let counter = 1; // Création d'un compteur pour les doublons
+    while (files.some(file => file.Title === newFileName)) { // Tant que le nom du fichier existe déjà
+        newFileName = `${fileName} (${counter})`; // Ajout d'un numéro pour le différencier
+        counter++;
+    }
     const file = { Title: newFileName, Content: content }; // Création d'un objet fichier
     files.push(file); // Ajout du fichier au tableau
     sessionStorage.setItem("files", JSON.stringify(files)); // Mise à jour des fichiers stockés

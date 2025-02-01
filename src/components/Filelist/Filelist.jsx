@@ -1,7 +1,8 @@
 import React from "react";
 import DownloadButton from "../buttons/Download/DownloadButton";
+import DeleteButton from "../buttons/Delete/DeleteButton";
 
-const Filelist = ({ files }) => {
+const Filelist = ({ files, setFiles }) => {
     if (!Array.isArray(files)) {
         return null;
     }
@@ -14,6 +15,7 @@ const Filelist = ({ files }) => {
                         <li key={index}>
                             {file.Title}
                             <DownloadButton fileName={file.Content} />
+                            <DeleteButton fileName={file.Title} setFiles={setFiles} />  
                         </li>
                     );
                 })}

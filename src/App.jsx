@@ -15,7 +15,7 @@ const App = () => {
   return (
       <div>
           <UploadButton setFiles={setFiles} />
-          <FileList files={files} />
+          <FileList files={files} setFiles={setFiles} />
       </div>
   );
 };

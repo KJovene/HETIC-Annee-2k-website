@@ -1,12 +1,17 @@
 // Fonction pour récupérer un fichier par son nom
-export const getFile = (fileName) => { // Paramètre = Nom du fichier
-    const storedFiles = sessionStorage.getItem("files"); // Récupération des fichiers stockés
-    const files = JSON.parse(storedFiles); // Conversion des fichiers en JSON
-    if (files === null) { // Si il n'y a pas de fichiers stockés, retrourne un tableau vide
-        return []; 
+export const getFile = (fileName) => {
+    const storedFiles = sessionStorage.getItem("files");
+    if (!storedFiles) {
+        console.error("No files found in sessionStorage.");
+        return null;
     }
-
-    return files.find(file => file.Title === fileName); // Retourne le fichier correspondant au nom
+    const files = JSON.parse(storedFiles);
+    console.log("Files in sessionStorage:", files);
+    const file = files.find(file => file.Title === fileName);
+    if (!file) {
+        console.error(`File with name ${fileName} not found.`);
+    }
+    return file;
 };
 
 // Fonction pour récupérer tous les fichiers

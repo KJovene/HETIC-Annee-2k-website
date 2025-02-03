@@ -1,4 +1,4 @@
-const apiToJson(url){
+const apiToJson = (url) => {
   return await fetch(url).json()
 }
 

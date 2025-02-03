@@ -1,5 +1,6 @@
-const apiToJson = (url) => {
-  return await fetch(url).json()
+const apiToJson = async  (url) => {
+  const response = await fetch(url)
+  return await response.json()
 }
 
 export async function citation() {
@@ -17,7 +18,3 @@ export async function moktail() {
 export async function recette() {
   return apiToJson("https://www.themealdb.com/api/json/v1/1/random.php");
 }
-
-
-
-

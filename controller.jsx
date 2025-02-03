@@ -4,7 +4,7 @@ const apiToJson = async  (url) => {
 }
 
 export async function citation() {
-  return apiToJson("https://api.adviceslip.com/advice");
+  return apiToJson("https://api.adviceslip.com/advice").slip.advice;
 }
 
 export async function blague() {

@@ -4,6 +4,7 @@ import './index.css'
 import HomePage from './vues/HomePage'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
+import MocktailPage from './vues/MocktailPage'
 
 const Layout = () => {
   console.log('  /\\_/\\  (\n ( ^.^ ) _)I ❤️ CATS\n   \\"/  ( \n ( | | )\n(__d b__)')
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/mocktail",
-        element: <>Mocktail</>
+        element: <MocktailPage />
       }
     ],
   }

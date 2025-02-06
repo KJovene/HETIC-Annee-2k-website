@@ -1,30 +1,30 @@
 import React from "react";
-import { getAllFiles } from "../../../controllers/filecontroller";
 import { getFile } from "../../../controllers/filecontroller";
 
-// Bouton de téléchargement
-const DownloadButton = ({ fileName }) => { // Prend en paramètre le contenu du fichier
-    const DownloadFile = () => { // Fonction de téléchargement du fichier
-        const file = getFile(fileName); // Récupération du fichier par son nom
-        console.log(`Attempting to download file: ${fileName}`);
-        if (file) {
-            const fileBlob = new Blob([file.Content], { type: "text/markdown" }); // Création d'un blob du fichier
-            const fileUrl = URL.createObjectURL(fileBlob); // Création d'une URL temporaire du fichier
-            const fileLink = document.createElement('a'); // Création d'un élément <a> temporaire
-            fileLink.href = fileUrl; // Mise à jour du lien du fichier
-            fileLink.download = `${file.Title}`; // Nom du fichier à télécharger
-            document.body.appendChild(fileLink); // Ajout de l'élément <a> au DOM
-            fileLink.click(); // Simuler un clic sur l'élément <a>
-            document.body.removeChild(fileLink); // Suppression de l'élément <a> du DOM
-        } else {
-            console.error("File not found in sessionStorage.");
-        }
+// Ceci est le composant pour le bouton de téléchargement
+const DownloadButton = ({ fileName }) => {
+    console.log("Received fileName in DownloadButton:", fileName);
 
+    const downloadFile = () => {
+        console.log("Attempting to download file:", fileName); 
+        const file = getFile(fileName); // Récupère le fichier à partir du localStorage
+        if (!file) {
+            console.error("File not found in localStorage.");
+            return;
+        }
+        const element = document.createElement("a"); // Je crée un élément <a> pour le téléchargement
+        const fileBlob = new Blob([file.Content], { type: "text/plain" }); // Je crée un Blob à partir du contenu du fichier
+        element.href = URL.createObjectURL(fileBlob); // Je crée une URL à partir du Blob
+        element.download = file.Title; // Je définis le nom du fichier
+        // Je simule un clic sur l'élément <a> pour déclencher le téléchargement
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element); // Je supprime l'élément <a> après le téléchargement
     };
-    // Retourne un bouton de téléchargement
+
     return (
-        <button onClick={DownloadFile}>Download</button>
+        <button onClick={downloadFile}>Download</button>
     );
 };
-// Export du bouton
+
 export default DownloadButton;

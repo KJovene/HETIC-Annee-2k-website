@@ -1,25 +1,32 @@
-// Importation des composants
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import UploadButton from "./components/buttons/Upload/UploadButton";
-import React from "react";
-import { useState , useEffect } from "react";
-import { getAllFiles } from "./controllers/filecontroller";
-import FileList from "./components/Filelist/Filelist";
-// Appel du composant bouton d'upload
+import { fetchFiles } from "./slices/fileSlices";
+import FileList from "./components/Filelist/Filelist.jsx";
+
+// Ceci est le composant principal de l'application
 const App = () => {
-  const [files, setFiles] = useState([]);
+    const dispatch = useDispatch();
+    const files = useSelector(state => state.file); // J'utilise useSelector pour accéder à l'état des fichiers dans Redux
+    console.log("Files in App component:", files);
 
-  useEffect(() => {
-      setFiles(getAllFiles());
-  }, []);
+    // J'utilise useEffect pour déclencher l'action fetchFiles lorsque le composant est monté
+    useEffect(() => {
+        dispatch(fetchFiles());
+    }, [dispatch]);
 
-  return (
-      <div>
-          <UploadButton setFiles={setFiles} />
-          <FileList files={files} setFiles={setFiles} />
-      </div>
-  );
-};
+    // J'utilise useEffect pour surveiller les changements dans l'état des fichiers
+    useEffect(() => {
+        console.log("Files in App component after fetch:", files); 
+    }, [files]);
 
-
+    return (
+        <div>
+            <h1>File Upload</h1>
+            <UploadButton />
+            <FileList files={files} />
+        </div>
+    );
+}
 
 export default App;

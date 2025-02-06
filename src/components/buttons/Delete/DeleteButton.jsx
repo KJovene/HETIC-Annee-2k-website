@@ -1,14 +1,15 @@
 import React from "react";
-import { deleteFile, getAllFiles } from "../../../controllers/filecontroller";
+import { useDispatch } from "react-redux";
+import { deleteFileAction } from "../../../slices/fileSlices"; // Assurez-vous que l'importation est correcte
 
-const DeleteButton = ({ fileName, setFiles }) => {
-    const DeleteFile = () => {
-        deleteFile(fileName);
-        setFiles(getAllFiles());
+// Ceci est le composant pour le bouton de suppression
+const DeleteButton = ({ fileName }) => {
+    const dispatch = useDispatch(); // J'utilise le hook useDispatch pour envoyer une action
+    const deleteFile = () => {
+        dispatch(deleteFileAction({ fileName })); // J'utilise l'action deleteFileAction pour supprimer un fichier
     };
-
     return (
-        <button onClick={DeleteFile}>Delete</button>
+        <button onClick={deleteFile}>Delete</button>
     );
 };
 

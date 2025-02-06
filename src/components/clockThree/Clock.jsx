@@ -1,4 +1,4 @@
-import { useFrame } from "@react-three/fiber"
+import { useFrame, useThree } from "@react-three/fiber"
 import { useEffect, useRef, useState } from "react"
 import { extend, useLoader } from '@react-three/fiber'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
@@ -6,26 +6,29 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 
 extend({ TextGeometry })
 
-
-// renderer.setPixelRatio(Math.min(window.devicePixelRatio, .2))
-// renderer.domElement.style.imageRendering = 'pixelated'
+const getDateString = () => {
+    const date = new Date()
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+    return `${hours.toString().length !== 1 ? hours : `0${hours}`} : ${minutes.toString().length !== 1 ? minutes : `0${minutes}`}`
+}
 
 export default () => {
     const boxRef = useRef()
-    const [currentDate, setCurrentDate] = useState(new Date())
+    const [currentDate, setCurrentDate] = useState(getDateString())
 
     const font = useLoader(FontLoader, "/assets/fonts/Bricolage.json")
-    console.log(font);
 
-
-    useFrame(() => {
-        boxRef.current.rotation.y += 0.02
-        // renderer.domElement.style.imageRendering = 'pixelated'
+    useFrame((state, delta) => {
+        boxRef.current.rotation.y += delta
     })
 
     useEffect(() => {
-        setCurrentDate(new Date())
-    }, [currentDate])
+        const interval = setInterval(() => {
+            setCurrentDate(getDateString())
+        }, 1000)
+        return () => clearInterval(interval)
+    }, [])
 
     useEffect(() => {
         const geometry = boxRef.current.geometry
@@ -35,12 +38,18 @@ export default () => {
             -0.5 * (geometry.boundingBox.max.y - geometry.boundingBox.min.y),
             -0.5 * (geometry.boundingBox.max.z - geometry.boundingBox.min.z)
         )
-    })
+    }, [currentDate])
 
     return <>
-    <mesh ref={boxRef}>
-        <textGeometry args={["10:10", { font, size: 3, depth: 1 }]} />
-        <meshStandardMaterial color="black" />
-    </mesh>
+        <ambientLight intensity={0.5} castShadow />
+        <directionalLight 
+            position={[10, 10, 5]} 
+            intensity={1} 
+            castShadow
+        />
+        <mesh ref={boxRef} castShadow receiveShadow>
+            <textGeometry args={[currentDate, { font, size: 3, depth: .8 }]} />
+            <meshStandardMaterial color="gray" />
+        </mesh>
     </>
 }

@@ -8,7 +8,6 @@ import FileList from "./components/Filelist/Filelist.jsx";
 const App = () => {
     const dispatch = useDispatch();
     const files = useSelector(state => state.file); // J'utilise useSelector pour accéder à l'état des fichiers dans Redux
-    console.log("Files in App component:", files);
 
     // J'utilise useEffect pour déclencher l'action fetchFiles lorsque le composant est monté
     useEffect(() => {
@@ -17,7 +16,6 @@ const App = () => {
 
     // J'utilise useEffect pour surveiller les changements dans l'état des fichiers
     useEffect(() => {
-        console.log("Files in App component after fetch:", files); 
     }, [files]);
 
     return (

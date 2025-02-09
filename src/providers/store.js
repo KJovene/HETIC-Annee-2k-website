@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import fileReducer from "./slices/fileSlices";
+import fileReducer from "../states/slices/fileSlices";
 
 
 // Je créé un conteneur de stockage pour mon application

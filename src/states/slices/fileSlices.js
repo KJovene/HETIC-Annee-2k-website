@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllFiles, addFile, deleteFile } from '../controllers/filecontroller';
+import { getAllFiles, addFile, deleteFile } from '../../controllers/filecontroller';
 
 // Je crée un slice Redux pour gérer l'état des fichiers
 const fileSlice = createSlice({
@@ -26,12 +26,4 @@ const fileSlice = createSlice({
 
 // J'exporte les actions et le reducer
 export const { setFiles, addFile: addFileAction, deleteFile: deleteFileAction } = fileSlice.actions;
-
-// Je définis une action asynchrone pour récupérer les fichiers
-export const fetchFiles = () => async dispatch => {
-    const files = getAllFiles();
-    console.log("Fetched files from localStorage:", files);
-    dispatch(setFiles(files));
-};
-
 export default fileSlice.reducer;

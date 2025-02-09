@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteFileAction } from "../../../slices/fileSlices"; // Assurez-vous que l'importation est correcte
+import { deleteFileAction } from "../../../states/slices/fileSlices"; // Assurez-vous que l'importation est correcte
 
 // Ceci est le composant pour le bouton de suppression
 const DeleteButton = ({ fileName }) => {

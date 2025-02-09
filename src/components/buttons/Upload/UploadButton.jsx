@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addFileAction } from "../../../slices/fileSlices";
+import { addFileAction } from "../../../states/slices/fileSlices";
 
 // Bouton d'upload
 const UploadButton = () => {

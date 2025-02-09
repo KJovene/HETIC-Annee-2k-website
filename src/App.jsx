@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UploadButton from "./components/buttons/Upload/UploadButton";
-import { fetchFiles } from "./slices/fileSlices";
+
 import FileList from "./components/Filelist/Filelist.jsx";
+import { getAllFiles } from "./controllers/filecontroller.js";
+import { setFiles } from "./states/slices/fileSlices.js";
 
 // Ceci est le composant principal de l'application
 const App = () => {
@@ -11,8 +13,8 @@ const App = () => {
 
     // J'utilise useEffect pour déclencher l'action fetchFiles lorsque le composant est monté
     useEffect(() => {
-        dispatch(fetchFiles());
-    }, [dispatch]);
+        dispatch(setFiles(getAllFiles()));
+    }, []);
 
     // J'utilise useEffect pour surveiller les changements dans l'état des fichiers
     useEffect(() => {

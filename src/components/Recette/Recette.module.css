@@ -1,0 +1,53 @@
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    background-color: black;
+}
+.ficheRecette {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 247, 195);
+    width: 60%;
+    padding-bottom: 20px;
+
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.whatDoYouNeed{
+    margin-top: 150px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.ingredient{
+    margin-left: 20px;
+}
+
+.timeToCook{
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.instruction{
+    width: 90%;
+    margin-left: 20px;
+}
+.videoTuto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    gap: 20px ;
+}

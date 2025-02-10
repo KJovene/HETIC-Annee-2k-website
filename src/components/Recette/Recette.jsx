@@ -53,12 +53,19 @@ function Recette(){
     return(
         <main className={style.container}>
             <article className={style.ficheRecette}>
-                <h3 className={style.title}>How to cook : {mealName}</h3>
-                <h4 className={style.whatDoYouNeed}>For this recipe you will need :</h4>
-                
-                    {ingredientList.map((ingredient) => (
-                        <p className={style.ingredient}>- {ingredient} </p>
-                    ))}
+                <header className={style.header}>
+                    <div className={style.ping}></div>
+                    <h3 className={style.title}>How to cook : {mealName}</h3>
+                    <div className={style.ping}></div>
+                </header>
+                <section className={style.titleAndIngredient}>
+                    <h4 className={style.whatDoYouNeed}>For this recipe you will need :</h4>
+                    
+                        {ingredientList.map((ingredient) => (
+                            <p className={style.ingredient}>- {ingredient} </p>
+                        ))}
+                        <img src="/cook.svg" alt="cooking stuff" width={200} className={style.cookIcon}/>
+                </section>
                 <section>   
                     <h4 className={style.timeToCook}>Now that we have all the ingredients, it's time to cook !</h4>
                     <p className={style.instruction}>{instruction}</p>

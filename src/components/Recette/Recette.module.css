@@ -4,7 +4,8 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
-    background-color: black;
+    
+    
 }
 .ficheRecette {
     display: flex;
@@ -25,9 +26,10 @@
 .whatDoYouNeed{
     margin-top: 150px;
     margin-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 20px;
 }
+
 
 .ingredient{
     margin-left: 20px;
@@ -36,7 +38,7 @@
 .timeToCook{
     margin-top: 100px;
     margin-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     font-size: 20px;
 }
 
@@ -50,4 +52,45 @@
     align-items: center;
     margin-top: 100px;
     gap: 20px ;
+}
+
+p{
+    font-family: 'Itim', cursive;
+}
+
+h3{
+    font-family: 'Itim', cursive;
+}
+
+h4{
+    font-family: 'Itim', cursive;
+}
+
+.ping{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: brown;
+    margin-top: 20px;
+    box-shadow: 2px 4px 4px black;
+    
+
+
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: auto;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.cookIcon{
+    position: absolute;
+    right: 370px;
+    top: 370px;
+    
 }

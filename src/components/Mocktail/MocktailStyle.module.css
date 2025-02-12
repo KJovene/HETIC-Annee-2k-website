@@ -60,7 +60,6 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-size: 12px;
   align-items: center;
 }
 
@@ -81,7 +80,4 @@
 .instructions {
   font-size: 20px;
   text-decoration: underline;
-}
-.bodyInstructions{
-  font-size: 12px;
 }

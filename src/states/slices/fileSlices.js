@@ -1,29 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllFiles, addFile, deleteFile } from '../../controllers/filecontroller';
+import { getAllFiles, addFile, editFile, deleteFile } from '../../controllers/filecontroller';
 
-// Je crée un slice Redux pour gérer l'état des fichiers
 const fileSlice = createSlice({
     name: 'file',
-    initialState: [],
+    initialState: getAllFiles(),
     reducers: {
-        // Je définis un reducer pour mettre à jour l'état avec les fichiers récupérés
         setFiles: (state, action) => {
-            console.log("Setting files in state:", action.payload);
             return action.payload;
         },
-        // Je définis un reducer pour ajouter un fichier à l'état
-        addFile: (state, action) => {
-            const newFile = addFile(action.payload.fileName, action.payload.content);
+        addFileAction: (state, action) => {
+            const { fileName, content } = action.payload;
+            const newFile = addFile(fileName, content);
             state.push(newFile);
         },
-        // Je définis un reducer pour supprimer un fichier de l'état
-        deleteFile: (state, action) => {
-            deleteFile(action.payload.fileName);
-            return state.filter(file => file.Title !== action.payload.fileName);
+        deleteFileAction: (state, action) => {
+            const { fileName } = action.payload;
+            deleteFile(fileName);
+            return state.filter(file => file.Title !== fileName);
         },
-    },
+        editFileAction: (state, action) => {
+            const { fileName, newFileName, newContent } = action.payload;
+            editFile(fileName, newFileName, newContent);
+            const fileIndex = state.findIndex(file => file.Title === fileName);
+            if (fileIndex !== -1) {
+                state[fileIndex] = { Title: newFileName, Content: newContent };
+            }
+        }
+    }
 });
 
-// J'exporte les actions et le reducer
-export const { setFiles, addFile: addFileAction, deleteFile: deleteFileAction } = fileSlice.actions;
+export const { setFiles, addFileAction, editFileAction, deleteFileAction } = fileSlice.actions;
 export default fileSlice.reducer;

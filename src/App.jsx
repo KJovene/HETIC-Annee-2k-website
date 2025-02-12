@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UploadButton from "./components/buttons/Upload/UploadButton";
-
-import FileList from "./components/Filelist/Filelist.jsx";
 import { getAllFiles } from "./controllers/filecontroller.js";
 import { setFiles } from "./states/slices/fileSlices.js";
+import FileList from "./components/filelist/FileList";
+import EditWindow from "./components/Editwindow/EditWindow";
 
 // Ceci est le composant principal de l'application
 const App = () => {
@@ -14,18 +15,21 @@ const App = () => {
     // J'utilise useEffect pour déclencher l'action fetchFiles lorsque le composant est monté
     useEffect(() => {
         dispatch(setFiles(getAllFiles()));
-    }, []);
+    }, [dispatch]);
 
     // J'utilise useEffect pour surveiller les changements dans l'état des fichiers
     useEffect(() => {
     }, [files]);
 
     return (
-        <div>
-            <h1>File Upload</h1>
-            <UploadButton />
-            <FileList files={files} />
-        </div>
+        <Router>
+            <div>
+                <Routes>
+                    <Route path="/" element={<FileList files={files} />} />
+                    <Route path="/edit/:fileName" element={<EditWindow />} />
+                </Routes>
+            </div>
+        </Router>
     );
 }
 

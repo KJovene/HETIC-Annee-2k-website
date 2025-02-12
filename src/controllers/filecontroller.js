@@ -1,15 +1,11 @@
 // Fonction pour récupérer un fichier par son nom
-export const getFile = (fileName) => {
+export const getFile = (fileName) => { 
     const storedFiles = localStorage.getItem("files"); // Je récupère les fichiers stockés dans localStorage dans la clé "files"
-    console.log("Stored files:", storedFiles);
     if (!storedFiles) { // Si aucun fichier n'est trouvé, je renvoie une erreur
-        console.error("No files found in localStorage.");
         return null;
     }
     const files = JSON.parse(storedFiles); // Je parse les fichiers stockés afinb de les manipuler
-    console.log("Looking for file:", fileName);
     const file = files.find(file => file.Title === fileName); // Je cherche le fichier avec le nom donné
-    console.log("File found:", file);
     if (!file) { // Si aucun fichier n'est trouvé alors je renvoie une erreur
         console.error(`File with name ${fileName} not found.`);
     }
@@ -19,7 +15,6 @@ export const getFile = (fileName) => {
 // Fonction pour récupérer tous les fichiers
 export const getAllFiles = () => { 
     const storedFiles = localStorage.getItem("files"); 
-    console.log("Files in localStorage before parse:", storedFiles);
     if (!storedFiles) { // Si aucun fichier n'est trouvé, je renvoie un tableau vide
         return [];
     }
@@ -48,8 +43,6 @@ export const addFile = (fileName, content) => {
     const file = { Title: newFileName, Content: content }; // Je crée un objet pour le nouveau fichier
     files.push(file); // J'ajoute le nouveau fichier au tableau de fichiers
     localStorage.setItem("files", JSON.stringify(files)); // Je stocke les fichiers dans localStorage
-    console.log("File added:", file);
-    console.log("Files in localStorage after add:", localStorage.getItem("files"));
     return file;
 };
 
@@ -60,7 +53,20 @@ export const deleteFile = (fileName) => {
         let files = JSON.parse(storedFiles);
         files = files.filter(file => file.Title !== fileName); // Je filtre les fichiers pour supprimer celui avec le nom donné
         localStorage.setItem("files", JSON.stringify(files)); // Je stocke les fichiers mis à jour dans localStorage
-        console.log("Files in localStorage after delete:", localStorage.getItem("files"));
+        return files;
+    }
+    return [];
+};
+
+// Fonction pour éditer un fichier
+export const editFile = (fileName, newFileName, newContent) => {
+    const storedFiles = localStorage.getItem("files");
+    if (storedFiles) {
+        let files = JSON.parse(storedFiles);
+        files = files.map(file =>
+            file.Title === fileName ? { Title: newFileName, Content: newContent } : file
+        );
+        localStorage.setItem("files", JSON.stringify(files));
         return files;
     }
     return [];

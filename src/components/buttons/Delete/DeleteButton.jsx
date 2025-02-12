@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteFileAction } from "../../../states/slices/fileSlices"; // Assurez-vous que l'importation est correcte
+import { deleteFileAction } from "../../../states/slices/fileSlices";
 
 // Ceci est le composant pour le bouton de suppression
 const DeleteButton = ({ fileName }) => {
@@ -9,7 +9,7 @@ const DeleteButton = ({ fileName }) => {
         dispatch(deleteFileAction({ fileName })); // J'utilise l'action deleteFileAction pour supprimer un fichier
     };
     return (
-        <button onClick={deleteFile}>Delete</button>
+        <button onClick={deleteFile}>Supprimer</button>
     );
 };
 

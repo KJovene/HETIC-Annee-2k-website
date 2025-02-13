@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './dashbord.module.css'
 
-function Dashbord() {
+function Dashboard() {
     return (
         <div className={style.Dashbord}>
             <div className={style.LeftSection}>
@@ -58,4 +58,4 @@ function Dashbord() {
     );
 }
 
-export default Dashbord;
+export default Dashboard;

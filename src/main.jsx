@@ -4,7 +4,7 @@ import './index.css'
 import HomePage from './vues/HomePage'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
-import Dashbord from './components/dashbord/dashbord'
+import Dashbord from './components/dashboard/dashboard'
 
 const Layout = () => {
   console.log('  /\\_/\\  (\n ( ^.^ ) _)I ❤️ CATS\n   \\"/  ( \n ( | | )\n(__d b__)')

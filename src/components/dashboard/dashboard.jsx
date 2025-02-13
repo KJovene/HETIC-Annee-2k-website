@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './dashbord.module.css'
+import style from './dashboard.module.css'
 
 function Dashboard() {
     return (

@@ -5,14 +5,17 @@ function Dashbord() {
     return (
         <div className={style.Dashbord}>
             <div className={style.LeftSection}>
-                <h1 className={style.time}>20H42</h1>
                 <div className={style.moktail}>
-                    <h2 className={style.title}>Moktail du jour</h2>
-                    <img src='' alt='Moktail du jour' className={style.image} />
+                        <h2 className={style.title}>Moktail du jour</h2>
+                    <div className={style.img}>
+                        <img src='' alt='Moktail du jour' className={style.image} />
+                    </div>
                 </div>
                 <div className={style.recette}>
                     <h2 className={style.title}>Recette du jour</h2>
-                    <img src='' alt='Recette du jour' className={style.image} />
+                    <div className={style.img}>
+                        <img src='' alt='Recette du jour' className={style.image} />
+                    </div>
                 </div>
                 <div className={style.citation}>
                     <h2 className={style.title}>Citation du jour</h2>
@@ -30,21 +33,23 @@ function Dashbord() {
                 </div>
             </div>
             <div className={style.RightSection}>
-                <div className={style.Markdown}>
-                    <h2 className={style.title}>Markdown</h2>                    
-                </div>
-                <div className={style.MarkdownContainer}>
-                    <h3 className={style.SousTitre}>Mes fichiers</h3>
-                    <div className={style.button}>
-                        <button>Nouveau</button>
-                        <button>Importer</button>
-                    </div>
-                    <div className={style.fichier}>
-                        <p className={style.NameFichier}>file_name</p>
-                        <p className={style.DateFichier}>01/02/2001</p>
-                        <div className={style.cliquable}>
-                            <p>edit</p>
-                            <p>download</p>
+                    <div className={style.Markdown}>
+                        <h2 className={style.title}>Markdown</h2>                    
+                         <div className={style.MarkdownContainer}>
+                            <div className={style.container}>
+                                <h3 className={style.SousTitre}>Mes fichiers</h3>
+                                <div className={style.button}>
+                                    <button>Nouveau</button>
+                                    <button>Importer</button>
+                                </div>
+                            </div>
+                        <div className={style.fichier}>
+                            <p className={style.NameFichier}>file_name </p>
+                            <p className={style.DateFichier}>01/02/2001 </p>
+                            <div className={style.cliquable}>
+                                <p className={style.edit}>edit</p>
+                                <p>download</p>
+                            </div>
                         </div>
                     </div>
                 </div>

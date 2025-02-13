@@ -10,6 +10,9 @@
     font-size: 50px;
     font-weight: bold;
     color: #FF3333;
+    display: flex;
+    justify-content: center;
+    font-family: JetBrainsMono;
 }
 
 .title {
@@ -31,6 +34,7 @@
 
 .cliquable {
     color: blue;
+    display: flex;
 }
  .SousTitre {
     font-family: 'Inter';
@@ -38,7 +42,50 @@
 }
 
 .MarkdownContainer {
+    background-color: #FFF7C3 ;
+    padding-bottom: 500px;
+}
+
+.joke {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+ .évènement {
+    margin-top: 50px;
+    padding-bottom: 50px;
+ }
+ .citation {
+    margin-top: 50px;
+    padding-bottom: 50px;
+ }
+ .recette {
+    margin-top: 50px;
+    padding-bottom: 50px;
+ }
+ .moktail {
+    margin-top: 50px;
+    padding-bottom: 50px;
+ }
+
+.container {
     display: flex;
     justify-content: space-between;
-    background-color: #FFF7C3 ;
+}
+
+.fichier {
+    display: flex;
+}
+
+.NameFichier, .DateFichier {
+    padding-right: 10px;
+}
+.edit{
+    padding-right: 20px;
+}
+.img {
+    display: flex;
+    justify-content: center;
+  
+    ;
+
 }

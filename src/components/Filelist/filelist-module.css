@@ -65,3 +65,9 @@ button {
     cursor: pointer;
     border-radius: 2px;
 }
+
+.file-date {
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #888;
+}

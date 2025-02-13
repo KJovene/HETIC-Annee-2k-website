@@ -40,7 +40,7 @@ export const addFile = (fileName, content) => {
         newFileName = `${fileName} (${counter})`;
         counter++;
     }
-    const file = { Title: newFileName, Content: content }; // Je crée un objet pour le nouveau fichier
+    const file = { Title: newFileName, Content: content, Date: new Date().toLocaleDateString() }; // Utilisez toLocaleDateString() pour obtenir une chaîne de caractères
     files.push(file); // J'ajoute le nouveau fichier au tableau de fichiers
     localStorage.setItem("files", JSON.stringify(files)); // Je stocke les fichiers dans localStorage
     return file;

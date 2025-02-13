@@ -27,6 +27,7 @@ const FileList = ({ files }) => {
                 {files.map((file, index) => (
                     <li key={index}>
                         <span>{file.Title}</span>
+                        <span>{file.Date}</span>
                         <span className="individual-file-actions">
                             <EditButton fileName={file.Title} />  
                             <DownloadButton fileName={file.Title} />

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import UploadButton from "./components/buttons/Upload/UploadButton";
 import { getAllFiles } from "./controllers/filecontroller.js";
 import { setFiles } from "./states/slices/fileSlices.js";
 import FileList from "./components/filelist/FileList";

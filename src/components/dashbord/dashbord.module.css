@@ -1,0 +1,44 @@
+.Dashbord {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    background-color: white;
+}
+
+.time { 
+    font-size: 50px;
+    font-weight: bold;
+    color: #FF3333;
+}
+
+.title {
+    font-family: 'Inter';
+    font-size: 28px;
+    color: black;
+    background-color: #FFAE18;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+.moktail, .recette, .citation, .évènement, .joke {
+    background-color: #FFF7C3;
+}
+
+
+.cliquable {
+    color: blue;
+}
+ .SousTitre {
+    font-family: 'Inter';
+    font-size: 25px;
+}
+
+.MarkdownContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFF7C3 ;
+}

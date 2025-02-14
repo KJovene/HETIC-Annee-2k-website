@@ -18,7 +18,7 @@ const UploadButtonEdit = ({ onFileUpload }) => {
     };
 
     return (
-        <div className="uploadButtonContainer">
+        <div className="uploadButtonContainerEdit">
             <input
                 type="file"
                 onChange={FileUpload}

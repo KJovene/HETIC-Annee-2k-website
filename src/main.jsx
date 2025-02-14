@@ -7,33 +7,34 @@ import Footer from './components/footer/Footer'
 import RecetteDuJour from './vues/RecetteDuJour'
 
 const Layout = () => {
-  console.log('  /\\_/\\  (\n ( ^.^ ) _)I ❤️ CATS\n   \\"/  ( \n ( | | )\n(__d b__)')
+  console.log('  /\/\  (\n ( ^.^ ) )I ❤️ CATS\n   \"/  ( \n ( | | )\n(d b)');
+
   return (
     <>
       <header>
-       <Navbar />
+        <Navbar />
       </header>
-      <main>
-        <Outlet />
-      </main>
+      <div>
+        <main>
+          <Outlet />
+        </main>
+      </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-          <Layout />
-    ),
+    element: <Layout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
       },
       {
-        path: '/markdown',
+        path: 'markdown',
         element: <>Markdown</>,
       },
       {
@@ -41,13 +42,13 @@ const router = createBrowserRouter([
         element: <RecetteDuJour/>,
       },
       {
-        path: "/mocktail",
-        element: <>Mocktail</>
+        path: 'mocktail',
+        element: <>Mocktail</>,
       }
     ],
   }
-])
+]);
 
 createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-)
+);

@@ -1,4 +1,3 @@
-import React from 'react'
 import style from './dashboard.module.css'
 
 function Dashboard() {

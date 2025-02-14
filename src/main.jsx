@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/mocktail",
-        element: <>Mocktail</>
+        element: <MocktailPage/>
       },
       {
         path: "/dashboard",

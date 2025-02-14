@@ -1,52 +1,53 @@
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
-import './index.css'
-import HomePage from './vues/HomePage'
-import Navbar from './components/navbar/Navbar'
-import Footer from './components/footer/Footer'
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import './index.css';
+import HomePage from './vues/HomePage';
+import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
 
 const Layout = () => {
-  console.log('  /\\_/\\  (\n ( ^.^ ) _)I ❤️ CATS\n   \\"/  ( \n ( | | )\n(__d b__)')
+  console.log('  /\/\  (\n ( ^.^ ) )I ❤️ CATS\n   \"/  ( \n ( | | )\n(d b)');
+
   return (
     <>
       <header>
-       <Navbar />
+        <Navbar />
       </header>
-      <main>
-        <Outlet />
-      </main>
+      <div>
+        <main>
+          <Outlet />
+        </main>
+      </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-          <Layout />
-    ),
+    element: <Layout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
       },
       {
-        path: '/markdown',
+        path: 'markdown',
         element: <>Markdown</>,
       },
       {
-        path: '/recette',
+        path: 'recette',
         element: <>Recette</>,
       },
       {
-        path: "/mocktail",
-        element: <>Mocktail</>
+        path: 'mocktail',
+        element: <>Mocktail</>,
       }
     ],
   }
-])
+]);
 
 createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-)
+);

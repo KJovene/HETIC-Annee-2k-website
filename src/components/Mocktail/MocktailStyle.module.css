@@ -1,0 +1,83 @@
+.body{
+  font-family: 'Itim';
+}
+.containerMocktail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  background-color: rgb(204, 202, 202);
+  padding-top: 40px;
+  border: solid black 2px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+}
+.containerMocktail > * {
+  width: 80%;
+}
+.containerPoints {
+  display: flex;
+  justify-content: space-between;
+}
+.Head {
+  display: flex;
+  justify-content: space-between;
+}
+.Points{
+  width: 15px;
+  height: 15px;
+  background-color: rgb(79, 79, 79);
+  z-index: 1;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  box-shadow: 2px 4px 8px rgb(0, 0, 0);
+
+}
+.titreMocktail{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.headMocktail{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.NomMocktail {
+  font-size: 30px;
+  padding-right: 16px;
+}
+
+.ingredients {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.imgMocktail {
+  margin-left: auto; 
+}
+
+.imgMocktailIngredient {
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.need {
+  font-size: 20px;
+  text-decoration: underline;
+}
+.instructions {
+  font-size: 20px;
+  text-decoration: underline;
+}

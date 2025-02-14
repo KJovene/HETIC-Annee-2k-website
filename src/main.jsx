@@ -4,6 +4,7 @@ import './index.css'
 import HomePage from './vues/HomePage'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
+import MocktailPage from './vues/MocktailPage'
 import RecetteDuJour from './vues/RecetteDuJour'
 
 const Layout = () => {
@@ -42,8 +43,8 @@ const router = createBrowserRouter([
         element: <RecetteDuJour/>,
       },
       {
-        path: 'mocktail',
-        element: <>Mocktail</>,
+        path: "/mocktail",
+        element: <MocktailPage />
       }
     ],
   }

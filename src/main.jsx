@@ -5,40 +5,43 @@ import HomePage from './vues/HomePage'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
 import Dashbord from './components/dashboard/dashboard'
+import MocktailPage from './vues/MocktailPage'
+import RecetteDuJour from './vues/RecetteDuJour'
 
 const Layout = () => {
-  console.log('  /\\_/\\  (\n ( ^.^ ) _)I ❤️ CATS\n   \\"/  ( \n ( | | )\n(__d b__)')
+  console.log('  /\/\  (\n ( ^.^ ) )I ❤️ CATS\n   \"/  ( \n ( | | )\n(d b)');
+
   return (
     <>
       <header>
-       <Navbar />
+        <Navbar />
       </header>
-      <main>
-        <Outlet />
-      </main>
+      <div>
+        <main>
+          <Outlet />
+        </main>
+      </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-          <Layout />
-    ),
+    element: <Layout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
       },
       {
-        path: '/markdown',
+        path: 'markdown',
         element: <>Markdown</>,
       },
       {
         path: '/recette',
-        element: <>Recette</>,
+        element: <RecetteDuJour/>,
       },
       {
         path: "/mocktail",
@@ -50,8 +53,8 @@ const router = createBrowserRouter([
       },
     ],
   }
-])
+]);
 
 createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-)
+);

@@ -14,20 +14,20 @@ const getDateString = () => {
 }
 
 export default () => {
+    const groupRef = useRef()
     const boxRef = useRef()
     const [currentDate, setCurrentDate] = useState(getDateString())
 
     const font = useLoader(FontLoader, "/assets/fonts/Bricolage.json")
 
     useFrame((state, delta) => {
-        boxRef.current.rotation.y += delta
+        groupRef.current.rotation.y += delta
     })
     
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentDate(getDateString())
         }, 1000)
-        
         
         return () => clearInterval(interval)
     }, [])
@@ -50,9 +50,11 @@ export default () => {
             intensity={1}
             castShadow
         />
-        <mesh ref={boxRef} castShadow receiveShadow>
-            <textGeometry args={[currentDate, { font, size: 3, depth: .8 }]} />
-            <meshStandardMaterial color="gray" />
-        </mesh>
+        <group ref={groupRef}>
+            <mesh ref={boxRef} castShadow receiveShadow>
+                <textGeometry args={[currentDate, { font, size: 3, depth: .8 }]} />
+                <meshStandardMaterial color="gray" />
+            </mesh>
+        </group>
     </>
 }

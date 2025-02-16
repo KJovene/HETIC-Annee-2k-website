@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import DefaultButton from "../defaultButton";
 
 // Ceci est le composant pour le bouton d'édition
 const EditButton = ({ fileName }) => {
@@ -10,7 +11,7 @@ const EditButton = ({ fileName }) => {
     };
 
     return (
-        <button onClick={openEditPage}>Modifier</button>
+        <DefaultButton onClick={openEditPage}>Modifier</DefaultButton>
     );
 };
 

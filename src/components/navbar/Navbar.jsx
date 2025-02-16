@@ -1,36 +1,47 @@
 import React from 'react';
-import style from './Navbar.module.css'
+import { Link } from 'react-router';
+import DefaultButton from '../buttons/defaultButton';
 
-function Header()  {
+function Header() {
     return (
-        <header className={style.header}>
-            <div className={style.haut}>
-            <div className={style.logoContainer}>
-                <img src='/LOGO_SAPALYUK.webp' className={style.logo}/>
-                <h1 className={style.titre}>Sapalyuk</h1>
+        <div className="flex flex-col gap-5 pb-4">
+            <div className='flex flex-row justify-between'>
+                <div className="flex items-center gap-3">
+                    <img src='/LOGO_SAPULYUK.webp' className="h-16 aspect-square" alt="Sapalyuk Logo" />
+                    <h1 className="text-7xl">Sapulyuk</h1>
+                </div>
+                <div className="flex flex-row">
+                    <p>Daily update between 7pm and 8pm - </p>
+                    <span className="text-blue-500">Edited Nov 22, 2002</span>
+                </div>
             </div>
-            <div className={style.majEdition}>
-            <p className={style.maj}>Mise à jour quotidienne entre 19h et 20h - </p>
-            <span className={style.edition}> Edition du 22 Novembre 2002</span>
+            <div className="flex flex-wrap">
+                <Link to="/">
+                    <DefaultButton>
+                        Homepage
+                    </DefaultButton>
+                </Link>
+                
+                <Link to="/markdown">
+                    <DefaultButton>
+                        Markdown
+                    </DefaultButton>
+                </Link>
+                
+                <Link to="/recette">
+                    <DefaultButton>
+                        Recipe
+                    </DefaultButton>
+                </Link>
+                
+                <Link to="/mocktail">
+                    <DefaultButton>
+                        Mocktail
+                    </DefaultButton>
+                </Link>
             </div>
-            </div>
-            <div className={style.nav}>
-                <button>Page d'accueil</button>
-                <button>Markdown</button>
-                <button>Recette</button>
-                <button>Moktail</button>
-            </div>
-        </header>
-    
-
-    
-
+        </div>
     );
-};
+}
 
-export default  Header;
-
-
-
-
-
+export default Header;

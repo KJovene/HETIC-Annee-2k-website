@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import DefaultButton from "../defaultButton";
 
 // Bouton pour créer un nouveau fichier
 const NewFileButton = () => {
@@ -10,17 +11,7 @@ const NewFileButton = () => {
     };
 
     return (
-        <div className="newFileButtonContainer">
-            <input
-                type="text"
-                onClick={handleNewFile}
-                id='new-file'
-                style={{ display: "none" }}
-            />
-            <label htmlFor="new-file" className="newFileButtonLabel">
-               Créer un nouveau fichier
-            </label>
-        </div>  
+        <DefaultButton onClick={handleNewFile}>Create</DefaultButton>
     );
 };
 

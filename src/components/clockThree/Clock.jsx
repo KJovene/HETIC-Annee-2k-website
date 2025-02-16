@@ -22,14 +22,16 @@ export default () => {
     useFrame((state, delta) => {
         boxRef.current.rotation.y += delta
     })
-
+    
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentDate(getDateString())
         }, 1000)
+        
+        
         return () => clearInterval(interval)
     }, [])
-
+    
     useEffect(() => {
         const geometry = boxRef.current.geometry
         geometry.computeBoundingBox()
@@ -39,12 +41,13 @@ export default () => {
             -0.5 * (geometry.boundingBox.max.z - geometry.boundingBox.min.z)
         )
     }, [currentDate])
+    
 
     return <>
         <ambientLight intensity={0.5} castShadow />
         <directionalLight 
             position={[10, 10, 5]} 
-            intensity={1} 
+            intensity={1}
             castShadow
         />
         <mesh ref={boxRef} castShadow receiveShadow>

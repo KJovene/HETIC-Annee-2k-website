@@ -1,31 +1,21 @@
-// export default () => {
-//     return <></>
-// }
-import style from "./Footer.module.css";
-
 function Footer(){
     return(
-        <main className={style.footer}>
-            <section>
-                <div className={style.SapulyukLogo}>
-                    <img src="/LOGO_SAPULYUK.webp" alt="SapulyukLogo" width={35} height={35} className={style.img} />
-                    <h3 className={style.Sapulyuk}>Sapulyuk</h3>
-                </div>
-            </section>
-            <section className={style.copyright}>
-                <img src="/Copyright.svg.png" alt="copyright" width={15} height={15} className={style.copyrightIcon}/>
-                <p>2002, Sapulyuk</p>
-            </section>
-            <section className={style.mentionAndStatus}>
+        <div className="flex flex-row justify-between pt-4">
+            <div className="flex flex-row items-end gap-2.5">
+                <img src="/LOGO_SAPULYUK.webp" alt="SapulyukLogo" className="aspect-square h-9" />
+                <h3 className="self-end italic">Sapulyuk</h3>
+            </div>
+            <p className="self-end">© 2002, Sapulyuk</p>
+            <div className="flex flex-col justify-end text-xs gap-4">
                 <p>Legals</p>
                 <p>Status</p>
-            </section>
-            <section className={style.contact}>
+            </div>
+            <div className="flex flex-col justify-end text-xs gap-4">
                 <p>Contact us :</p>
-                <p>contact@sapulyuk.fr</p>
-            </section>
-        </main>
+                <p>contact@sapulyuk.com</p>
+            </div>
+        </div>
     )
 }
 
-export default  Footer;
+export default Footer;

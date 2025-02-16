@@ -2,36 +2,40 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addFileAction } from "../../../states/slices/fileSlices";
 
-// Bouton d'upload
-const UploadButton = ( { onFileUpload }) => {
+// Bouton d'upload spécifique à la page d'édition
+const UploadButtonEdit = ({ onFileUpload }) => {
     const dispatch = useDispatch();
-    const FileUpload = (e) => { // Fonction pour gérer l'upload de fichier
-        const file = e.target.files[0]; // Récupère le fichier (en l'occurence le premier fichier)
+    const FileUpload = (e) => {
+        const file = e.target.files[0];
         if (file) {
-            const reader = new FileReader(); // Crée un objet FileReader
-            reader.onload = (e) => { // Quand le fichier est chargé
-                const content = e.target.result; // Récupère le contenu du fichier
-                dispatch(addFileAction({ fileName: file.name, content: content })); // Dispatch l'action pour ajouter le fichier
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const content = e.target.result;
+                if (onFileUpload) {
+                    onFileUpload(file.name, content); // j'appelle la fonction onFileUpload pour mettre à jour le contenu dans le local storage
+                }else{
+                    dispatch(addFileAction({ fileName: file.name, content: content })); // Dispatch l'action pour ajouter le fichier
+                }
             }
-            reader.readAsText(file); // Lit le contenu du fichier
+            reader.readAsText(file);
         }
     };
 
     return (
-        <div className="uploadButtonContainer">
-            <input
-                type="file"
-                onChange={FileUpload}
-                accept=".md"
-                id="file-upload"
-                style={{ display: "none" }}
-            />
-            <label htmlFor="file-upload" className="uploadButtonLabel">
-                Importer
-            </label>
-        </div>    
+        <div className="group flex items-center bg-gray-300 border border-solid border-black px-2 py-1 cursor-pointer hover:bg-gray-400">
+        <input
+            type="file"
+            onChange={FileUpload}
+            accept=".md"
+            id="file-upload"
+            style={{ display: "none" }}
+        />
+        <label htmlFor="file-upload" className="group-hover:text-white">
+            Importer
+        </label>
+    </div>   
     );
 };
 
 // Export du bouton
-export default UploadButton;
+export default UploadButtonEdit;
